@@ -1,0 +1,21 @@
+services:
+  omniroute:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    restart: unless-stopped
+    stop_grace_period: 40s
+
+    expose:
+      - "20128"
+
+    environment:
+      NODE_ENV: production
+      PORT: "20128"
+
+    volumes:
+      - omniroute-data:/app/data
+
+volumes:
+  omniroute-data:
